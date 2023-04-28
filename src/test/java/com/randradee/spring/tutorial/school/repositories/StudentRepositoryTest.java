@@ -88,4 +88,14 @@ class StudentRepositoryTest {
     public void findByEmailWithNativeQueryNamedParam(){
         System.out.println(studentRepository.getStudentByEmailAddressNativeNamedParam("shivam@email.com"));
     }
+
+    @Test
+    public void updateStudentFirstNameByEmailId(){
+        System.out.println(studentRepository.updateStudentFirstNameByEmailId("testUpdate2", "shivam@email.com"));
+    }
+
+    @Test
+    public void deleteStudentByEmailId(){
+        System.out.println(studentRepository.deleteStudentByEmailId("shivam@email.com"));
+    }
 }
