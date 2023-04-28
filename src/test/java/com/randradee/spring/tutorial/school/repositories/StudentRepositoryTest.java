@@ -74,4 +74,18 @@ class StudentRepositoryTest {
     public void findByFirstNameContaining(){
         System.out.println(studentRepository.findByFirstNameContaining("te"));
     }
+
+    @Test
+    public void findByEmailWithCustomQuery(){
+        System.out.println(studentRepository.getStudentByEmailAddress("shivam@email.com"));
+    }
+
+    @Test
+    public void findByEmailWithNativeQuery(){
+        System.out.println(studentRepository.getStudentByEmailAddressNative("shivam@email.com"));
+    }
+    @Test
+    public void findByEmailWithNativeQueryNamedParam(){
+        System.out.println(studentRepository.getStudentByEmailAddressNativeNamedParam("shivam@email.com"));
+    }
 }
