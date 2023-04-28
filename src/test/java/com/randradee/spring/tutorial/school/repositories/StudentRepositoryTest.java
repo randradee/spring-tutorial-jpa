@@ -64,4 +64,14 @@ class StudentRepositoryTest {
     public void printAllStudents(){
         System.out.println(studentRepository.findAll());
     }
+
+    @Test
+    public void findByFirstName(){
+        System.out.println(studentRepository.findByFirstName("test"));
+    }
+
+    @Test
+    public void findByFirstNameContaining(){
+        System.out.println(studentRepository.findByFirstNameContaining("te"));
+    }
 }
