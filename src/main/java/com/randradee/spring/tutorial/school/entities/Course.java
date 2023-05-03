@@ -29,6 +29,13 @@ public class Course {
     @Column(name = "course_credits", nullable = false)
     private Integer credits;
 
-    @OneToOne(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "course")
     private CourseMaterial courseMaterial;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "teacher_id",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
 }
