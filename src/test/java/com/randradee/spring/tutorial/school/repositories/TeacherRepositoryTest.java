@@ -2,14 +2,17 @@ package com.randradee.spring.tutorial.school.repositories;
 
 import com.randradee.spring.tutorial.school.entities.Course;
 import com.randradee.spring.tutorial.school.entities.Teacher;
+import net.bytebuddy.TypeCache;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TeacherRepositoryTest {
@@ -40,9 +43,15 @@ class TeacherRepositoryTest {
         Teacher teacher = Teacher.builder()
                 .firstName("testWithCourse")
                 .lastName("testWithCourse")
-//                .courses(courses)
                 .build();
 
         System.out.println(teacherRepository.save(teacher));
+    }
+
+    @Test
+    public void getAllTeachersWithPagination(){
+        Pageable firstPageWithThreeRecords = PageRequest.of(0, 3);
+
+        System.out.println(teacherRepository.findAll(firstPageWithThreeRecords));
     }
 }
