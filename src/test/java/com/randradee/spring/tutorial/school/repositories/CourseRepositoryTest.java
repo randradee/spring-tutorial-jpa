@@ -2,6 +2,7 @@ package com.randradee.spring.tutorial.school.repositories;
 
 import com.randradee.spring.tutorial.school.entities.Course;
 import com.randradee.spring.tutorial.school.entities.CourseMaterial;
+import com.randradee.spring.tutorial.school.entities.Student;
 import com.randradee.spring.tutorial.school.entities.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,29 +127,36 @@ class CourseRepositoryTest {
         System.out.println("courses = " + courses);
     }
 
-//    @Test
-//    public void saveCourseWithStudentAndTeacher() {
-//
-//        Teacher teacher = Teacher.builder()
-//                .firstName("Lizze")
-//                .lastName("Morgan")
-//                .build();
-//
-//        Student student = Student.builder()
-//                .firstName("Abhishek")
-//                .lastName("Singh")
-//                .emailId("abhishek@gmail.com")
-//                .build();
-//
-//        Course course = Course
-//                .builder()
-//                .title("AI")
-//                .credits(12)
-//                .teacher(teacher)
-//                .build();
-//
-//        course.addStudents(student);
-//
-//        courseRepository.save(course);
-//    }
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+
+        Teacher teacher = Teacher.builder()
+                .firstName("Lizze")
+                .lastName("Morgan")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Abhishek")
+                .lastName("Singh")
+                .emailId("dale@gmail.com")
+                .build();
+
+        Student student1 = Student.builder()
+                .firstName("Renato")
+                .lastName("Andrade")
+                .emailId("test.renatopandrade@gmail.com")
+                .build();
+
+        Course course = Course
+                .builder()
+                .title("AI")
+                .credits(12)
+                .teacher(teacher)
+                .build();
+
+        course.addStudent(student);
+        course.addStudent(student1);
+
+        courseRepository.save(course);
+    }
 }
